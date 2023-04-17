@@ -17,9 +17,20 @@ credentials +=
 
 ## Commands to publish
 
-In SBT
-- `publish`
+- `sbtn publish`
 
+## Example usage
+
+build.sbt
+```
+externalResolvers += "ScalaLibrary packages" at "https://maven.pkg.github.com/supermanue/example-library"
+libraryDependencies += "kyledinh" %% "scala-library_3" % "0.1.0-SNAPSHOT"
+```
+
+scala code
+```
+import com.kyledinh.scala-library.Sudoku 
+```
 
 ## Resources
 - Tutorial: https://medium.com/@supermanue/how-to-publish-a-scala-library-in-github-bfb0fa39c1e4
