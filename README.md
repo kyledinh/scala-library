@@ -1,13 +1,33 @@
 # Scala Library
 > com.kyledinh.scala-library.*
-Example library to be published in GitHub.
+
+### Use GitHub Packages as a maven repository to host your Scala packages.
+
+1. [Generate A GitHub Token](#generate-github-token)
+2. [Add GitHub Token to SBT Build](#add-github-token-to-credentials-used-by-sbt)
+3. [STB Command to compile and publish](#commands-to-publish)
+4. [Example usage in a project](#example-usage)
+
+### Software Versions 
+
+| Software            | Version        | Install                                          |
+|---------------------|----------------|--------------------------------------------------|
+| JVM                 | openjdk 17.0.4 | https://sdkman.io/install                        |
+| Scala               | 3.2.2          | https://www.scala-lang.org/download              |
+| sbt                 | 1.8.2          | https://www.scala-sbt.org/download.html          |
+| sbt-github-packages | 0.5.3          | https://github.com/djspiewak/sbt-github-packages |
+
+<br><hr><br>
 
 ## Generate GitHub Token
 - https://github.com/settings/tokens
 - Settings > Developer Settings > Personal access token > Token (classic) > "Generate new token" button 
 [![GitHub Token Screenshot][github-token]](./docs/assets/github-token.png)
 
-## Add GitHub Token to credentials used SBT
+<br><hr><br>
+
+
+## Add GitHub Token to credentials used by SBT
 - Place generated token in `$HOME/.sbt/1.0/github.sbt`
 ```
 credentials += 
@@ -17,10 +37,18 @@ credentials +=
     "GITHUB USERNAME",
     "GITHUB TOKEN")
 ```
+- Add SBTplugin to `project/plugins.sbt`, [dijspiewak/sbt-github-packages](https://github.com/djspiewak/sbt-github-packages)
+```
+addSbtPlugin("com.codecommit" % "sbt-github-packages" % "0.5.3")
+```
+
+<br><hr><br>
 
 ## Commands to publish
 
 - `sbtn publish`
+
+<br><hr><br>
 
 ## Example usage
 
@@ -49,6 +77,8 @@ import com.kyledinh.sudoku.*
 val s1 = Sudoku.loadFromResource("puzzles/sudoku_5.txt")
 val answer = Sudoku.simulate(s1)
 ```
+
+<br><hr><br>
 
 ## Resources
 - Tutorial: https://medium.com/@supermanue/how-to-publish-a-scala-library-in-github-bfb0fa39c1e4
