@@ -23,13 +23,28 @@ credentials +=
 
 build.sbt
 ```
-externalResolvers += "ScalaLibrary packages" at "https://maven.pkg.github.com/supermanue/example-library"
-libraryDependencies += "kyledinh" %% "scala-library_3" % "0.1.0-SNAPSHOT"
+externalResolvers += "ScalaLibrary packages" at "https://maven.pkg.github.com/kyledinh/scala-library"
+
+lazy val root = project
+  .in(file("."))
+  .settings(
+    name                                   := "scala-3-workspace",
+    version                                := "0.1.0-SNAPSHOT",
+    scalaVersion                           := "3.2.2",
+    libraryDependencies += "org.scalameta" %% "munit" % "0.7.29" % Test,
+    libraryDependencies += "com.kyledinh" %% "scala-library_3" % "0.1.0-SNAPSHOT"
+  )
 ```
 
 scala code
-```
-import com.kyledinh.scala-library.Sudoku 
+```scala
+import com.kyledinh.sudoku.*
+
+@main def hello: Unit =
+  println("Solving a Sudoku problem...")
+
+val s1 = Sudoku.loadFromResource("puzzles/sudoku_5.txt")
+val answer = Sudoku.simulate(s1)
 ```
 
 ## Resources
