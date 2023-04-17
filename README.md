@@ -2,9 +2,12 @@
 > com.kyledinh.scala-library.*
 Example library to be published in GitHub.
 
-## Setting GitHub Token
+## Generate GitHub Token
 - https://github.com/settings/tokens
 - Settings > Developer Settings > Personal access token > Token (classic) > "Generate new token" button 
+[![GitHub Token Screenshot][github-token]](./docs/assets/github-token.png)
+
+## Add GitHub Token to credentials used SBT
 - Place generated token in `$HOME/.sbt/1.0/github.sbt`
 ```
 credentials += 
@@ -21,7 +24,7 @@ credentials +=
 
 ## Example usage
 
-build.sbt
+[build.sbt](https://github.com/kyledinh/scala-3-workspace/blob/main/build.sbt)
 ```
 externalResolvers += "ScalaLibrary packages" at "https://maven.pkg.github.com/kyledinh/scala-library"
 
@@ -36,7 +39,7 @@ lazy val root = project
   )
 ```
 
-scala code
+[scala code](https://github.com/kyledinh/scala-3-workspace/blob/main/src/main/scala/Main.scala)
 ```scala
 import com.kyledinh.sudoku.*
 
@@ -50,4 +53,5 @@ val answer = Sudoku.simulate(s1)
 ## Resources
 - Tutorial: https://medium.com/@supermanue/how-to-publish-a-scala-library-in-github-bfb0fa39c1e4
 
-
+<!-- MARKDOWN LINKS & IMAGES -->
+[github-token]: docs/assets/github-token.png
